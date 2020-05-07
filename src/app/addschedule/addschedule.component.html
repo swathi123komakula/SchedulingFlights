@@ -1,0 +1,129 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+        <h3>ADD SCHEDULE</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onSubmit(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>SCHEDULED FLIGHT ID </label>
+
+            <input required minlength="1" type="number" #sfscheduledflightIdRef='ngModel' name="scheduledflightid" ngModel class="form-control">
+
+            <div *ngIf='sfscheduledflightIdRef.errors && sfscheduledflightIdRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfscheduledflightIdRef.errors.required'> Provide scheduled flight Id </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>AVAILABLE SEATS </label>
+
+            <input required minlength="10" type="number" #sfSeatsRef='ngModel' name="seats" ngModel class="form-control">
+
+            <div *ngIf='sfSeatsRef.errors && sfSeatsRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfSeatsRef.errors.required'> Provide AVAILABLE SEATS </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+
+            <label>TICKET COST</label>
+
+            <input required minlength="10" type="number" #sfTicketRef='ngModel' name="ticket" ngModel class="form-control">
+
+            <div *ngIf='sfTicketRef.errors && sfTicketRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfTicketRef.errors.required'> Provide TICKET COST </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>SOURCE AIRPORT: </label>
+
+            <input required minlength="6" type="text" #sfSourceRef='ngModel' name="sourceairport" ngModel class="form-control">
+
+            <div *ngIf='sfSourceRef.errors
+                        && sfSourceRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfSourceRef.errors.required'>
+
+                    Provide Source airport
+
+                </div>
+
+                <div *ngIf='sfSourceRef.errors.pattern'>Name should be minimum of 6 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>DESTINATION AIRPORT: </label>
+
+            <input required minlength="10" length="10" type="text" #sfdestinationRef='ngModel' name="destinationairport" ngModel class="form-control">
+
+            <div *ngIf='sfdestinationRef.errors && sfdestinationRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfdestinationRef.errors.required'> Provide Destination airport</div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>ARRIVAL TIME: </label>
+
+            <input required length="6" type="date" #sfArrivalRef='ngModel' name="arrivaltime" ngModel class="form-control">
+
+            <div *ngIf='sfArrivalRef.errors && sfArrivalRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfArrivalRef.errors.required'> Provide Arrival Time </div>
+
+                <div *ngIf='sfArrivalRef.errors.pattern'>Arrival time should be of 5 digits</div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>DEPARTURE TIME: </label>
+
+            <input required minlength="6" type="text" #sfDeparture='ngModel' name="departuretime" ngModel
+                class="form-control">
+
+            <div *ngIf='sfDeparture.errors
+                        && sfDeparture.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfDeparture.errors.required'>
+
+                    Provide Deaparture Time 
+
+                </div>
+
+                <div *ngIf='sfDeparture.errors.pattern'>Departure time should be of 6 digits</div>
+
+            </div>
+
+        </div>
+        <input [disabled]="userForm.invalid" type="submit" value="Add Schedule" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

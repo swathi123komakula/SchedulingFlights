@@ -1,0 +1,127 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+
+    <h3>ADD BOOK</h3>
+
+    <form #userForm="ngForm" (ngSubmit)='onUpdate(userForm.value)'>
+
+        <div class="form-group">
+
+            <label>BOOK ID: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.scheduledflightid" readonly="readonly" #bookscheduledflightIdRef='ngModel'
+                name="scheduledflightid" ngModel class="form-control">
+
+        </div>
+
+
+
+        <div class="form-group">
+
+            <label>AVAILABLE SEATS: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.seats" #sfSeatsRef='ngModel' name="seats" ngModel
+                class="form-control">
+
+            <div *ngIf='sfSeatsRef.errors
+                        && sfSeatsRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfSeatsRef.errors.required'>
+
+                    Provide Available seats
+
+                </div>
+
+                <div *ngIf='sfSeatsRef.errors.pattern'>Name should be minimum of 6 characters length</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>TICKET COST: </label>
+
+            <input required minlength="1" type="number" [(ngModel)]="obj1.ticket" #sfticketRef='ngModel' name="ticket"
+                ngModel class="form-control">
+
+            <div *ngIf='sfticketRef.errors && sfticketRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfticketRef.errors.required'> Provide Ticket cost </div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>SOURCE AIRPORT: </label>
+
+            <input required length="10" type="text" [(ngModel)]="obj1.source" #sfsourceRef='ngModel' name="sourceairport" ngModel class="form-control">
+
+            <div *ngIf='sfsourceRef.errors && sfsourceRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfsourceRef.errors.required'> Provide Source Airport</div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>DESTINATION AIRPORT: </label>
+
+            <input required minlength="20" type="text" [(ngModel)]="obj1.destination" #sfdestination='ngModel' name="destinationairport"
+                ngModel class="form-control">
+
+            <div *ngIf='sfdestination.errors
+                        && sfdestination.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfdestination.errors.required'>
+
+                    Provide Destination Airport
+
+                </div>
+
+                <div *ngIf='sfdestination.errors.pattern'>Destination airport should be minimum of 10 digits</div>
+
+            </div>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>ARRIVAL TIME: </label>
+
+            <input required length="10" type="date" [(ngModel)]="obj1.arrival" #sfarrivalRef='ngModel' name="arrivaltime" ngModel class="form-control">
+
+            <div *ngIf='sfarrivalRef.errors && sfarrivalRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfarrivalRef.errors.required'> Provide Arrival Time</div>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+
+            <label>DEPARTURE TIME: </label>
+
+            <input required length="10" type="date" [(ngModel)]="obj1.departure" #sfdepartureRef='ngModel' name="departureairport" ngModel class="form-control">
+
+            <div *ngIf='sfdepartureRef.errors && sfdepartureRef.touched' class="alert alert-danger">
+
+                <div [hidden]='!sfdepartureRef.errors.required'> Provide Departure Time</div>
+
+            </div>
+        </div>
+
+        <input [disabled]="userForm.invalid" type="submit" value="Edit Employee" class="btn btn-primary">
+
+    </form>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

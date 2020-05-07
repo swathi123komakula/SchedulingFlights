@@ -1,0 +1,47 @@
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<div class="container">
+    <table class="table table-striped" *ngIf="schedules && schedules.length > 0  else elseBlock">
+        <thead>
+        <tr>
+            <th>SCHEDULED FLIGHT ID</th>
+            <th>AVAILABLE SEATS</th>
+            <th>TICKET COST</th>
+            <th>SOURCE AIRPORT</th>
+            <th>DESTINATION AIRPORT</th>
+            <th>ARRIVAL TIME</th>
+            <th>DEPARTURE TIME</th>
+            <th>DELETE SCHEDULE</th>
+            <th>EDIT SCHEDULE</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let s of schedules">
+                <td> {{s.scheduledflightid}} </td>
+                <td> {{s.seats}} </td>
+                <td> {{s.ticket}} </td>
+                <td>{{s.source}}</td>
+                <td> {{s.destination}} </td>
+                <td>{{s.arrival}}</td>
+                <td>{{s.departure}}</td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=delete(s)>Delete</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-large btn-block btn-primary" (click)=update(s)>Edit</button>
+                </td>
+                <td>
+            </tr>
+        </tbody>
+    </table>
+    <ng-template #elseBlock>
+        <h4 align="center"> There are no Schedules to display please add the schedules </h4>
+    </ng-template>
+
+</div>
+<div>
+    <h2>{{message}}</h2>
+</div>

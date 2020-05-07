@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "Scheduling"
+    }
+  },
+  "defaultProject": "Scheduling",
+  "cli": {
+    "analytics": false
+  }
 }
